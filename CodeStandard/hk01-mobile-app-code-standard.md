@@ -3,14 +3,22 @@
 
 The following are some suggested code standard for the `hk01-mobile-app` [repo](https://github.com/hk01-digital/hk01-mobile-app/).
 
+## Table of Content
+
+- [1. Prefer destructuring assignment](#1-prefer-destructuring-assignment)
+- [2. Prefer the 'Or' version when using Ramda functions](#2-prefer-the-or-version-when-using-ramda-functions)
+- [3. Prefered import style when using Ramda](#3-prefered-import-style-when-using-ramda)
+- [4. Prefer fat arrow function over .bind(this)](#4-prefer-fat-arrow-function-over-bindthis)
+- [5. Enclose plain text in JSX with tags](#5-enclose-plain-text-in-jsx-with--tags)
+- [6. Use PropTypes from 'prop-types'](#6-use-proptypes-from-prop-types)
+
 ---
 ### 1. Prefer destructuring assignment
 
 #### What
 
-* use [destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) to increase readability:
-
-* 
+use [destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) to increase readability:
+ 
 ```
 const { articleId, mainCategory } = this.props
 ```
