@@ -6,7 +6,7 @@
 
 The following is a *so-called 'best practice'* for adding data tracking in `hk01-mobile-app`.
 
-The guide is just a suggested approach and certainly not definitely, suggestions are welcomed.
+The guide is just a suggested approach and certainly not definitive, suggestions are welcomed.
 
 ---
 
