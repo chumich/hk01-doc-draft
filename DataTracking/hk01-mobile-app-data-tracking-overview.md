@@ -6,7 +6,7 @@
 
 This document aims at giving an overview on data tracking in `hk01-mobile-app`.
 
-If you are looking for **suggested best practice**, take a look at [this document]() instead.
+If you are looking for **suggested best practice**, take a look at [this document](hk01-mobile-app-data-tracking-best-practice.md) instead.
 
 ## Tabel of Content
 
@@ -224,7 +224,7 @@ For the user interaction currently we are looking into `detox` to see if that is
 
 ## Legacy Code Study
 
-See the [best practice document]() for how to add new data tracking, do **NOT** blindly following existing code as they might be legacy.
+See the [best practice document](hk01-mobile-app-data-tracking-best-practice.md) for how to add new data tracking, do **NOT** blindly following existing code as they might be legacy.
 
 ### Problems
 

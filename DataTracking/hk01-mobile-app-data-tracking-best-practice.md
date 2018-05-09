@@ -208,4 +208,4 @@ Following are some examples for reference on the `TrackingSaga` approach.
 
 This is the [Data Tracking Spec](https://docs.google.com/spreadsheets/d/13hlpwAst7UO81HabafIRdNqZoDp9Fa6-Zr8xdvF2JcA/edit#gid=690822871)
 
-More details on data tracking can be found in the [overview document]()
+More details on data tracking can be found in the [overview document](hk01-mobile-app-data-tracking-overview.md)
