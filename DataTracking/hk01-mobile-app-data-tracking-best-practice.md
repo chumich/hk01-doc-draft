@@ -1,6 +1,7 @@
-| Version | Last Updated |
-|---------|--------------|
-| Draft.2 | 2018-05-09   |
+---
+id: hk01-mobile-app-data-tracking-best-practice
+last updated: 2018-05-09
+---
 
 # Data Tracking - Best Practice
 

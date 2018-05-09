@@ -1,6 +1,7 @@
-| Version | Last Updated |
-|---------|--------------|
-| Draft.3 | 2018-05-09   |
+---
+id: hk01-mobile-app-data-tracking-overview
+last updated: 2018-05-09
+---
 
 # Data Tracking - Overview
 
