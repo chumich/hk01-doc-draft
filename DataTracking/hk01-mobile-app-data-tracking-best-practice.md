@@ -1,30 +1,34 @@
 | Version | Last Updated |
 |---------|--------------|
-| Draft.1 | 2018-05-08   |
+| Draft.2 | 2018-05-09   |
 
 # Data Tracking - Best Practice
 
-The following is a *so-called 'best practice'* for adding data tracking in `hk01-mobile-app`.
+The following is a *so-called 'best practice'* for adding new data tracking in `hk01-mobile-app`.
 
 The guide is just a suggested approach and certainly not definitive, suggestions are welcomed.
+
+> if you have suggestions, please open PR with edited version of this document
 
 ---
 
 ### NOTICE
 * We will be shortly refactoring `toGaPiwikData` logic into `trackEvent`
-* This guide will be updated after refactoring
+* This guide will be updated afterwards
 
 ---
 
 ## Table of Content
 
-`Work in Progress`
+1. [TL; DR;](#tl-dr)
+2. [Getting Tracker](#getting-tracker)
+3. [Track Screen View](#track-screen-view)
+4. [Track Event](#track-event)
+5. [Writing Test](#writing-test)
+6. [Tracking Saga](#tracking-saga)
+7. [More Information](#more-information)
 
-`Work in Progress`
-
-`Work in Progress`
-
-## TL;DR;
+## TL; DR;
 
 1. Use `tracker` from `context` or `props`
 2. Use `trackScreenView` for screen view event
@@ -34,30 +38,31 @@ The guide is just a suggested approach and certainly not definitive, suggestions
 6. Transform data using `toGaPiwikData` for event message
 
 Example:
+> NOTE: change the import route
 
 ```
-// TODO: change import route
 import { EVT_CATEGORY, EVT_ACTION } from 'App/Constants/tracking'
 import { toGaPiwikData } from 'App/Helpers/TrackingHelper'
 
+// logic to prepare the payload content ...
+
 // create your event message
-const eventMessage = {
+const eventMessage = toGaPiwikData({
   'article_id': articleId
   'category': articleCategory
   'account_id': accountId
   'bucket_id': appBucketId
-}
+})
 
 // send event tracking
 this.context.tracker.trackEvent(
   EVT_CATEGORY.ARTICLE,
   EVT_ACTION.SHARE_CLICK,
-  toGaPiwikData(eventMessage) 
+  eventMessage 
 }
 
-// NOTE: toGaPiwikData() logic will later be moved into trackEvent()
-
 ```
+> NOTE: `toGaPiwikData()` logic will later be moved into `trackEvent()`
 
 ## Getting Tracker
 
@@ -65,7 +70,7 @@ this.context.tracker.trackEvent(
 * In some Container/Component it might be wrapped into `props` by `withAppConfig`
 * Generally it is more preferrable to directly use the `tracker` from `context`
 
-You should be able to use the `tracker` from either `context` or `props`:
+> You should be able to use the `tracker` from either `context` or `props`:
 
 ```
 this.context.tracker.trackEvent(...)
@@ -137,15 +142,17 @@ this.context.tracker.trackEvent(
 ```
 // GOOD
 DEVICE_ID: 'DeviceId'
+TAP_CONTACT_US: 'TapContactUs'
 
 // BAD
 DEVICEID: 'DeviceId'
+TAP_CONTACTUS: 'TapContactUs'
 ```
 
 ### Event Message
 
-* For events without a event message, just omit the `message` parameter
-* If you have a event message, use `toGaPiwikData` helper function in `TrackingHelper` to transform it before passing to `trackEvent`
+* For events without a event message, omit the `message` parameter
+* If a event message is needed, use `toGaPiwikData` helper function in `TrackingHelper` to transform it before passing to `trackEvent`
 
 ```
 // App/Helpers/TrackingHelper.js
@@ -161,14 +168,14 @@ export const toGaPiwikData = (data: Object): ?Object => {
   }
 }
 ```
-For example the following event message:
+For example the following event payload:
 
 ```
 {
-  'channelName': '熱門',
-  'articleId': '163761',
-  'pressedItemPosition': '1',
-  'appBucketId': '00001'
+  "channelName": "熱門",
+  "articleId": "163761",
+  "pressedItemPosition": "1",
+  "appBucketId": "00001"
 }
 ```
 After data transformation:
@@ -180,17 +187,25 @@ After data transformation:
 }
 ```
 
+## Writing Test
+
+`Work in Progress` `Work in Progress` `Work in Progress`
+
+## Tracking Saga
+
+In case of needing to send data tracking at every API call, one solution is to create `TrackingSaga`.
+
+Following are some examples for reference on the `TrackingSaga` approach.
+
+|Tracking Saga|Tracking Redux|
+|-------------|--------------|
+|`App/Modules/Wallet/Sagas/TrackingSagas.js`|`App/Modules/Wallet/Redux/TrackingRedux.js`|
+|`App/Modules/Merchant/Sagas/TrackingSagas.js`|`App/Modules/Merchant/Redux/TrackingRedux.js`|
+|`App/Modules/Ticketing/Sagas/TrackingSagas.js`|`App/Modules/Ticketing/Redux/TrackingRedux.js`|
+
+
 ## More Information
 
 This is the [Data Tracking Spec](https://docs.google.com/spreadsheets/d/13hlpwAst7UO81HabafIRdNqZoDp9Fa6-Zr8xdvF2JcA/edit#gid=690822871)
 
-Following are some useful files to look, when trying to understand the whole data tracking thing
-
-|What|File|
-|---|---|
-|`Tracker` Type|`App/types/tracker.js`|
-|`Tracker` Service (Class)|`App/Services/Tracker.js`|
-|`TrackingOperator` Helper|`App/Helpers/TrackingHelper.js`|
-|Implementation of tracker for `GA`|`App/Services/Tracker/GA.js`|
-|Implementation of tracker for `Piwik`|`App/Services/Tracker/Piwik.js`|
-|Defined tracking related constants|`App/Constants/tracking.js`|
+More details on data tracking can be found in the [overview document]()
