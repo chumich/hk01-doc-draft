@@ -183,7 +183,7 @@ After data transformation:
 ```
 {
   "ga": "熱門/163761/1/00001",
-  "piwik": "{\"channelName\":\"熱門\",\"articleId\":\"163761\",\"pressedItemPosition\":\"1\",\"appBucketId\":\"00001\"}"
+  "piwik": <payload JSON object>
 }
 ```
 
