@@ -253,13 +253,13 @@ also see [this thread](https://github.com/facebook/react-native/issues/13243) fo
 
 when using `PropTypes`, instead of:
 
-```
+```Javascript
 import { PropTypes } from 'react'
 ```
 
 use:
 
-```
+```Javascript
 import PropTypes from 'prop-types'
 ```
 
